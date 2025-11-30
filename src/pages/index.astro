@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const posts = await getCollection('blog');
+
+// Sort posts by date (newest first)
+const sortedPosts = posts.sort((a, b) => {
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<Layout title="Blog Posts">
+  <div class="mb-12">
+    <h1 class="text-4xl font-bold mb-4">Developer Blog</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400">
+      Posts fetched from GitHub repositories tagged with <code class="px-2 py-1 bg-gray-200 dark:bg-gray-800 rounded text-sm">blog-post</code>
+    </p>
+  </div>
+
+  <div class="space-y-8">
+    {sortedPosts.map((post) => (
+      <article class="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:shadow-lg transition-shadow bg-white dark:bg-gray-800">
+        <a href={`/post/${post.id}`} class="block group">
+          <h2 class="text-2xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            {post.data.title}
+          </h2>
+
+          <div class="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3">
+            <time datetime={post.data.date.toString()}>
+              {new Date(post.data.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+
+            {post.data.stars !== undefined && (
+              <span class="flex items-center gap-1">
+                ⭐ {post.data.stars}
+              </span>
+            )}
+          </div>
+
+          {post.data.description && (
+            <p class="text-gray-700 dark:text-gray-300 mb-3">
+              {post.data.description}
+            </p>
+          )}
+
+          <div class="flex items-center justify-between">
+            <span class="text-blue-600 dark:text-blue-400 group-hover:underline">
+              Read more →
+            </span>
+            <a
+              href={post.data.githubUrl}
+              class="text-sm text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+              onclick="event.stopPropagation()"
+            >
+              View on GitHub
+            </a>
+          </div>
+        </a>
+      </article>
+    ))}
+  </div>
+
+  {sortedPosts.length === 0 && (
+    <div class="text-center py-12 text-gray-600 dark:text-gray-400">
+      <p class="text-xl">No blog posts found.</p>
+      <p class="mt-2">Make sure you have repositories tagged with <code class="px-2 py-1 bg-gray-200 dark:bg-gray-800 rounded">blog-post</code></p>
+    </div>
+  )}
+</Layout>

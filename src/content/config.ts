@@ -3,7 +3,7 @@ import { defineCollection, z } from 'astro:content';
 import { githubLoader } from '../loaders/github-loader';
 
 const blog = defineCollection({
-  loader: githubLoader, 
+  loader: githubLoader(),
   schema: z.object({
     title: z.string(),
     date: z.string().or(z.date()), // Handle flexible date formats
