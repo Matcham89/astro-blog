@@ -43,9 +43,12 @@ const socialImageURL = new URL('/og-image.png', Astro.site);
   </head>
   <body class="relative min-h-screen flex flex-col text-gray-900 dark:text-gray-100">
     <!-- Gradient Background -->
-    <div class="fixed inset-0 -z-10 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20"></div>
+    <div class="fixed inset-0 -z-10 bg-gradient-to-br from-slate-100 via-blue-50 to-purple-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950"></div>
 
-    <header class="border-b border-white/20 dark:border-gray-700/50 backdrop-blur-md bg-white/70 dark:bg-gray-900/70 sticky top-0 z-10 shadow-lg shadow-black/5">
+    <!-- Subtle Pattern Overlay -->
+    <div class="fixed inset-0 -z-10 opacity-30 dark:opacity-20" style="background-image: radial-gradient(circle at 1px 1px, rgb(100 116 139 / 0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
+
+    <header class="border-b border-white/30 dark:border-gray-700/50 backdrop-blur-xl bg-white/90 dark:bg-slate-900/90 sticky top-0 z-10 shadow-lg shadow-black/5">
       <div class="max-w-4xl mx-auto px-4 py-4">
         <nav class="flex items-center justify-between">
           <a href="/" class="text-xl md:text-2xl font-bold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
@@ -72,7 +75,7 @@ const socialImageURL = new URL('/og-image.png', Astro.site);
       <slot />
     </main>
 
-    <footer class="border-t border-white/20 dark:border-gray-700/50 mt-16 backdrop-blur-md bg-white/70 dark:bg-gray-900/70">
+    <footer class="border-t border-white/30 dark:border-gray-700/50 mt-16 backdrop-blur-xl bg-white/90 dark:bg-slate-900/90">
       <div class="max-w-4xl mx-auto px-4 py-8">
         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
           <p class="text-gray-600 dark:text-gray-400 text-sm">
