@@ -19,7 +19,7 @@ const readingTime = Math.ceil(wordCount / 200);
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
-  <article class="max-w-3xl mx-auto">
+  <article class="max-w-3xl mx-auto backdrop-blur-md bg-white/60 dark:bg-gray-800/60 border border-white/20 dark:border-gray-700/50 rounded-xl p-8 shadow-xl">
     <!-- Back navigation -->
     <a
       href="/"
@@ -63,8 +63,8 @@ const readingTime = Math.ceil(wordCount / 200);
         </span>
 
         {post.data.stars !== undefined && post.data.stars > 0 && (
-          <span class="flex items-center gap-1">
-            ⭐ {post.data.stars} stars
+          <span class="flex items-center gap-1 px-3 py-1 backdrop-blur-sm bg-yellow-400/20 dark:bg-yellow-500/20 border border-yellow-400/30 dark:border-yellow-500/30 text-yellow-700 dark:text-yellow-400 rounded-full font-medium">
+            ⭐ {post.data.stars}
           </span>
         )}
 
