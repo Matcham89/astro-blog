@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro'; // Assuming you have a basic layout
+
+// 1. Tell Astro to generate a page for every item in the "blog" collection
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+// 2. Render the markdown content to HTML
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title}>
+  <main class="prose prose-lg mx-auto p-4">
+    <div class="mb-8 border-b pb-4">
+      <h1 class="text-4xl font-bold">{post.data.title}</h1>
+      <div class="flex justify-between mt-2 text-gray-500">
+        <span>{new Date(post.data.date).toLocaleDateString()}</span>
+        <a href={post.data.githubUrl} class="hover:underline">
+          View Repo ({post.data.stars} stars)
+        </a>
+      </div>
+    </div>
+    
+    <Content />
+    
+  </main>
+</Layout>
