@@ -10,67 +10,166 @@ const sortedPosts = posts.sort((a, b) => {
   const dateB = new Date(b.data.date);
   return dateB.getTime() - dateA.getTime();
 });
+
+// Calculate reading times
+const postsWithReadingTime = sortedPosts.map(post => ({
+  ...post,
+  readingTime: Math.ceil(post.body.split(/\s+/g).length / 200)
+}));
 ---
 
-<Layout title="Blog Posts">
-  <div class="mb-12">
-    <h1 class="text-4xl font-bold mb-4">Developer Blog</h1>
-    <p class="text-lg text-gray-600 dark:text-gray-400">
-      Posts fetched from GitHub repositories tagged with <code class="px-2 py-1 bg-gray-200 dark:bg-gray-800 rounded text-sm">blog-post</code>
-    </p>
+<Layout title="Home">
+  <!-- Hero Section -->
+  <div class="mb-16">
+    <div class="text-center max-w-3xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+        Hub & Spoke Developer Blog
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-4">
+        Content sourced directly from GitHub repositories
+      </p>
+      <p class="text-base text-gray-500 dark:text-gray-500">
+        Posts automatically fetched from repos tagged with
+        <code class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded font-mono text-sm">blog-post</code>
+      </p>
+    </div>
+
+    <!-- Stats -->
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+      <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-6 text-center border border-blue-200 dark:border-blue-800">
+        <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">
+          {postsWithReadingTime.length}
+        </div>
+        <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Blog Posts
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-6 text-center border border-purple-200 dark:border-purple-800">
+        <div class="text-3xl font-bold text-purple-600 dark:text-purple-400">
+          {postsWithReadingTime.reduce((sum, post) => sum + (post.data.stars || 0), 0)}
+        </div>
+        <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Total Stars
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-6 text-center border border-green-200 dark:border-green-800">
+        <div class="text-3xl font-bold text-green-600 dark:text-green-400">
+          {postsWithReadingTime.reduce((sum, post) => sum + post.readingTime, 0)}
+        </div>
+        <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          Minutes of Content
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="space-y-8">
-    {sortedPosts.map((post) => (
-      <article class="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:shadow-lg transition-shadow bg-white dark:bg-gray-800">
-        <a href={`/post/${post.id}`} class="block group">
-          <h2 class="text-2xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-            {post.data.title}
-          </h2>
+  <!-- Posts Grid -->
+  {postsWithReadingTime.length > 0 ? (
+    <div>
+      <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+        <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+        </svg>
+        Latest Posts
+      </h2>
 
-          <div class="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3">
-            <time datetime={post.data.date.toString()}>
-              {new Date(post.data.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </time>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
+        {postsWithReadingTime.map((post) => (
+          <article class="group relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:shadow-xl hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300">
+            <a href={`/post/${post.id}`} class="block">
+              <!-- Post Header -->
+              <div class="flex items-start justify-between mb-3">
+                <h3 class="text-2xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex-1">
+                  {post.data.title}
+                </h3>
+                {post.data.stars !== undefined && post.data.stars > 0 && (
+                  <div class="ml-4 flex items-center gap-1 px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 rounded-full text-sm font-medium">
+                    ⭐ {post.data.stars}
+                  </div>
+                )}
+              </div>
 
-            {post.data.stars !== undefined && (
-              <span class="flex items-center gap-1">
-                ⭐ {post.data.stars}
-              </span>
-            )}
-          </div>
+              <!-- Metadata -->
+              <div class="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-400 mb-4">
+                <time datetime={post.data.date.toString()} class="flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                  </svg>
+                  {new Date(post.data.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                  })}
+                </time>
 
-          {post.data.description && (
-            <p class="text-gray-700 dark:text-gray-300 mb-3">
-              {post.data.description}
-            </p>
-          )}
+                <span class="flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                  </svg>
+                  {post.readingTime} min read
+                </span>
+              </div>
 
-          <div class="flex items-center justify-between">
-            <span class="text-blue-600 dark:text-blue-400 group-hover:underline">
-              Read more →
-            </span>
-            <a
-              href={post.data.githubUrl}
-              class="text-sm text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-              onclick="event.stopPropagation()"
-            >
-              View on GitHub
+              <!-- Description -->
+              {post.data.description && (
+                <p class="text-gray-700 dark:text-gray-300 mb-4 line-clamp-2">
+                  {post.data.description}
+                </p>
+              )}
+
+              <!-- Footer -->
+              <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                <span class="text-blue-600 dark:text-blue-400 font-medium group-hover:gap-2 inline-flex items-center gap-1 transition-all">
+                  Read article
+                  <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </span>
+
+                <a
+                  href={post.data.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-sm text-gray-500 dark:text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 flex items-center gap-1"
+                  onclick="event.stopPropagation()"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  GitHub
+                </a>
+              </div>
             </a>
-          </div>
-        </a>
-      </article>
-    ))}
-  </div>
-
-  {sortedPosts.length === 0 && (
-    <div class="text-center py-12 text-gray-600 dark:text-gray-400">
-      <p class="text-xl">No blog posts found.</p>
-      <p class="mt-2">Make sure you have repositories tagged with <code class="px-2 py-1 bg-gray-200 dark:bg-gray-800 rounded">blog-post</code></p>
+          </article>
+        ))}
+      </div>
+    </div>
+  ) : (
+    <div class="text-center py-20">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 dark:bg-gray-800 mb-4">
+        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+        No blog posts yet
+      </h3>
+      <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto">
+        Create a GitHub repository and add the <code class="px-2 py-1 bg-gray-200 dark:bg-gray-800 rounded text-sm">blog-post</code> topic to get started.
+      </p>
+      <a
+        href="https://github.com/new"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        Create a Repository
+      </a>
     </div>
   )}
 </Layout>

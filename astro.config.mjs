@@ -4,8 +4,19 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://astro-blog-1r2.pages.dev',
   integrations: [
-    expressiveCode(),
+    expressiveCode({
+      themes: ['github-dark', 'github-light'],
+      styleOverrides: {
+        borderRadius: '0.5rem',
+        borderWidth: '1px',
+      },
+      defaultProps: {
+        wrap: true,
+        preserveIndent: true,
+      },
+    }),
     tailwind()
   ]
 });
