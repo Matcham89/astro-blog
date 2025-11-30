@@ -287,7 +287,8 @@ MIT License - Feel free to use this architecture for your own blog!
 
 - **Blog**: [astro-blog-1r2.pages.dev](https://astro-blog-1r2.pages.dev)
 - **GitHub**: [@Matcham89](https://github.com/Matcham89)
-- **LinkedIn**: [Connect with me](https://linkedin.com/in/chris-matcham)
+- **LinkedIn**: [Christopher Matcham](https://www.linkedin.com/in/christophermatcham/)
+- **YouTube**: [@ChrisMatcham](https://www.youtube.com/@ChrisMatcham)
 
 ---
 
