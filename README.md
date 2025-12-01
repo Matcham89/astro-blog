@@ -289,7 +289,7 @@ The homepage automatically displays:
 
 ## 🔄 Migration from Jekyll
 
-Migrating from the old [matcham89.github.io](https://github.com/Matcham89/matcham89.github.io) Jekyll blog? See [`MIGRATION_PROMPT.md`](./MIGRATION_PROMPT.md) for detailed instructions on automating the migration process.
+Migrating from the old [matcham89.github.io](https://github.com/Matcham89/matcham89.github.io) Jekyll blog!
 
 ---
 
@@ -311,7 +311,7 @@ MIT License - Feel free to use this architecture for your own blog!
 
 ## 🔗 Links
 
-- **Blog**: [astro-blog-1r2.pages.dev](https://astro-blog-1r2.pages.dev)
+- **Blog**: [astro-blog-1r2.pages.dev](https://chrismatcham.dev)
 - **GitHub**: [@Matcham89](https://github.com/Matcham89)
 - **LinkedIn**: [Christopher Matcham](https://www.linkedin.com/in/christophermatcham/)
 - **YouTube**: [@ChrisMatcham](https://www.youtube.com/@ChrisMatcham)
