@@ -39,7 +39,7 @@ This blog uses a unique **Hub & Spoke** architecture:
 -->
 
 ### 2025
-
+- **[2025-12-01]** [Kagent Slack Bot](https://github.com/Matcham89/slackbot-agent)
 - **[2025-09-30]** [How to Create a Google Cloud Project (GCP) Step-by-Step](https://github.com/Matcham89/how-to-create-a-google-cloud-project-gcp-step-by-step)
 - **[2025-09-17]** [Cloud Engineer Reveals Top Job Hunting Strategies](https://github.com/Matcham89/cloud-engineer-reveals-top-job-hunting-strategies)
 - **[2025-08-22]** [The Secret to Getting Hired in Tech Quickly](https://github.com/Matcham89/the-secret-to-getting-hired-in-tech-quickly)
