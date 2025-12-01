@@ -38,22 +38,13 @@ const postsWithReadingTime = sortedPosts.map(post => ({
     </div>
 
     <!-- Stats -->
-    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
       <div class="backdrop-blur-xl bg-white/80 dark:bg-slate-800/80 border border-white/40 dark:border-slate-700/50 rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
         <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">
           {postsWithReadingTime.length}
         </div>
         <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
           Blog Posts
-        </div>
-      </div>
-
-      <div class="backdrop-blur-xl bg-white/80 dark:bg-slate-800/80 border border-white/40 dark:border-slate-700/50 rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow">
-        <div class="text-3xl font-bold text-purple-600 dark:text-purple-400">
-          {postsWithReadingTime.reduce((sum, post) => sum + (post.data.stars || 0), 0)}
-        </div>
-        <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
-          Total Stars
         </div>
       </div>
 
