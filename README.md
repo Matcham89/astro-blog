@@ -335,6 +335,6 @@ This architecture offers several advantages:
 
 **Built with ❤️ by Chris Matcham**
 
-*Platform Engineer | Cloud Infrastructure | DevOps*
+*Senior Platform Engineer | Cloud Infrastructure | DevOps*
 
 </div>
