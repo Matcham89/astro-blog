@@ -9,8 +9,8 @@ export function githubLoader(): Loader {
   return {
     name: 'github-loader',
     load: async ({ store, logger }) => {
-      const username = import.meta.env.GITHUB_USERNAME;
-      const token = import.meta.env.GITHUB_TOKEN;
+      const username = process.env.GITHUB_USERNAME || import.meta.env.GITHUB_USERNAME;
+      const token = process.env.GITHUB_TOKEN || import.meta.env.GITHUB_TOKEN;
 
       if (!token) throw new Error("Missing GITHUB_TOKEN");
       if (!username) throw new Error("Missing GITHUB_USERNAME");

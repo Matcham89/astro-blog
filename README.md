@@ -35,13 +35,39 @@ This blog uses a unique **Hub & Spoke** architecture:
   This will trigger a Cloudflare Pages rebuild and fetch your new content.
 
   Template:
-  - **[YYYY-MM-DD]** [Post Title](https://github.com/Matcham89/repo-name) - Brief description
+  - **[YYYY-MM-DD]** [Post Title](https://github.com/Matcham89/repo-name)
 -->
 
 ### 2025
 
-- **[2025-11-30]** [Blog Test](https://github.com/Matcham89/blog-test) - Testing the Hub & Spoke blog architecture
+- **[2025-09-30]** [How to Create a Google Cloud Project (GCP) Step-by-Step](https://github.com/Matcham89/how-to-create-a-google-cloud-project-gcp-step-by-step)
+- **[2025-09-17]** [Cloud Engineer Reveals Top Job Hunting Strategies](https://github.com/Matcham89/cloud-engineer-reveals-top-job-hunting-strategies)
+- **[2025-08-22]** [The Secret to Getting Hired in Tech Quickly](https://github.com/Matcham89/the-secret-to-getting-hired-in-tech-quickly)
+- **[2025-08-16]** [I Tried Building My Own MCP Tool From Scratch](https://github.com/Matcham89/i-tried-building-my-own-mcp-tool-from-scratch)
+- **[2025-05-08]** [Exploring ArgoCD's New MCP Server with Kagent](https://github.com/Matcham89/Exploring-ArgoCD-s-New-MCP-Server-with-Kagent)
+- **[2025-05-05]** [Deploying a K8S Ninja using Kagent MCP with ArgoCD & Helm](https://github.com/Matcham89/Deploying-a-K8S-ninja-using-kagent-MCP-with-ArgoCD-Helm)
+- **[2025-05-01]** [Simple Portable Kubernetes Lab](https://github.com/Matcham89/Simple-Portable-Kubernetes-Lab)
+- **[2025-03-31]** [Certified Kubernetes Application Developer Exam: What You Really Need To Know!](https://github.com/Matcham89/Certified-Kubernetes-Application-Developer-Exam.-What-You-Really-Need-To-Know)
+- **[2025-01-14]** [Why I Switched From Hostinger To Github Pages](https://github.com/Matcham89/Why-I-Switched-From-Hostinger-To-Github-Pages)
+- **[2025-01-10]** [Cloud Computing Trends and Essential Skills for 2025](https://github.com/Matcham89/Cloud-Computing-Trends-and-Essential-Skills-for-2025)
+- **[2025-01-01]** [Hands-On Kubernetes: Part 2 - Deploying Vault](https://github.com/Matcham89/Hands-On-Kubernetes-Part-2-Deploying-Vault)
 
+### 2024
+
+- **[2024-12-21]** [Hands-On Kubernetes: Part 1 - Deploying Kind](https://github.com/Matcham89/Hands-On-Kubernetes-Part-1-Deploying-Kind)
+- **[2024-12-14]** [Local Kubernetes Development: A Journey to KIND](https://github.com/Matcham89/Local-Kubernetes-Development-A-Journey-to-KIND)
+- **[2024-12-07]** [Lokalise Translations With Github Actions](https://github.com/Matcham89/2024-12-7-Lokalise-Translations-With-Github-Actions)
+- **[2024-12-01]** [ArgoCD Multi-Source Deployments for Google Config Connector](https://github.com/Matcham89/2024-12-1-ArgoCD-Multi-Source-Deployments-for-Google-Config-Connector)
+- **[2024-11-15]** [Cloud Computing Trends and Essential Skills for 2024](https://github.com/Matcham89/Cloud-Computing-Trends-and-Essential-Skills-for-2024)
+- **[2024-11-01]** [Transforming Your GitHub Profile: From Basic to Brilliant](https://github.com/Matcham89/Transforming-Your-GitHub-Profile-From-Basic-to-Brilliant)
+- **[2024-06-17]** [I Tried Building My Own MCP Tool From Scratch (2024)](https://github.com/Matcham89/i-tried-building-my-own-mcp-tool-from-scratch-2024)
+
+### 2023
+
+- **[2023-11-01]** [Google Cloud Professional Cloud Architect Exam](https://github.com/Matcham89/Google-Cloud-Professional-Cloud-Architect-Exam)
+- **[2023-08-13]** [I Tried Building My Own MCP Tool From Scratch (2023)](https://github.com/Matcham89/i-tried-building-my-own-mcp-tool-from-scratch-2023)
+
+<!-- Total posts: 20 -->
 <!-- Add new posts above this line, in reverse chronological order (newest first) -->
 
 ---
