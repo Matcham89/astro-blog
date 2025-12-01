@@ -6,7 +6,7 @@
 
 > A modern blog platform with content sourced directly from GitHub repositories using the Hub & Spoke architecture.
 
-**Live Site**: [https://astro-blog-1r2.pages.dev](https://astro-blog-1r2.pages.dev)
+**Live Site**: [https://astro-blog-1r2.pages.dev](https://chrismatcham.dev)
 
 ---
 
