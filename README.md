@@ -38,6 +38,7 @@ This blog uses a unique **Hub & Spoke** architecture:
   - **[YYYY-MM-DD]** [Post Title](https://github.com/Matcham89/repo-name)
 -->
 
+
 ### 2026
 - **[2026-01-05]** [External Database Stack for Kubernetes](https://github.com/Matcham89/External-Database-Stack-for-Kubernetes)
 
